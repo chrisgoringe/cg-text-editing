@@ -27,7 +27,7 @@ class TextEdit:
             while time.monotonic() < endat and self.message is None:
                 time.sleep(0.1)
             if self.message is None:
-                PromptServer.instance.send_sync("textedit_request", {"node_id": node_id, "message":text, "timeup":True})
+                PromptServer.instance.send_sync("textedit_request", {"node_id": node_id, "timeup":True})
                 endat = time.monotonic() + 5
                 while time.monotonic() < endat and self.message is None:
                     time.sleep(0.1)               

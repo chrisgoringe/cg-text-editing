@@ -11,7 +11,7 @@ function send_message(node_id, message) {
 function textedit_request(msg) {
     const node = app.graph._nodes_by_id[msg.detail.node_id]
     if (node && node.receive_textedit_request) {
-        if (msg.detail.timeup) node.receive_textedit_timeup(msg.detail.message)
+        if (msg.detail.timeup) node.receive_textedit_timeup()
         else node.receive_textedit_request(msg.detail.message)
     } else {
         console.log(`textedit request fell on empty ears - node ${msg.detail.node_id} didn't want it`)
