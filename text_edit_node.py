@@ -28,6 +28,9 @@ class TextEdit:
                 time.sleep(0.1)
             if self.message is None:
                 PromptServer.instance.send_sync("textedit_request", {"node_id": node_id, "message":text, "timeup":True})
+                endat = time.monotonic() + 5
+                while time.monotonic() < endat and self.message is None:
+                    time.sleep(0.1)               
             return ( self.message or text, )
         finally:
             POBox.waiting.pop(node_id,None)

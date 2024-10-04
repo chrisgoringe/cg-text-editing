@@ -26,8 +26,8 @@ app.registerExtension({
                 this.widgets[2].value = msg
                 this.widgets[2].element.disabled = false
             }
-            nodeType.prototype.receive_textedit_timeup = function(msg) {
-                this.widgets[2].value = msg
+            nodeType.prototype.receive_textedit_timeup = function() {
+                send_message( this.id, this.widgets[2].value )
                 this.widgets[2].element.disabled = true
             }
             nodeType.prototype.handle_key = function(e) {
